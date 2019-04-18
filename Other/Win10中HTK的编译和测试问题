@@ -1,0 +1,182 @@
+这是英文的安装指导
+
+我按照这个来进行安装，有些看不太懂的地方我又谷歌了一下
+  Compiling & Installing HTK under Windows
+  ========================================
+  
+  Prerequisites:
+      * HTK has been verified to compile using Microsoft Visual Studio.
+      * For testing, you will require a Perl interpreter such as
+        ActivePerl.  
+      * You will need a tool such as 7-zip or winzip (commercial) for unpacking
+        the HTK source code archive.
+      * It is helpful if you have some familiarity with using the DOS
+        command line interface, as you will need to interact with it in
+        order to compile, install and run HTK.
+      * Ensure that your PATH contains 
+        C:\Program Files\Microsoft Visual Studio .NET 2003\Vc7\bin
+        Or if you are using older versions:
+        C:\Program Files\Microsoft Visual Studio\VC98\bin
+
+
+  Compilation:
+  
+     1. Unpack the HTK sources using 7-zip.
+     2. Open a DOS command window: Click Start, select Run type cmd at
+        the prompt and click OK.
+     3. cd into the directory in which you unpacked the sources.
+     4. cd into the htk directory. Type:
+
+        cd htk
+
+     5. Create a directory for the library and tools. Type:
+
+        mkdir bin.win32
+
+     6. Run VCVARS32 (it should be in your path, see prerequisites above)
+     7. Build the HTK Library, which provides the common functionality
+        used by the HTK Tools. Enter the following commands:
+
+      cd HTKLib
+      nmake /f htk_htklib_nt.mkf all
+      cd ..
+
+     8. Build the HTK Tools
+
+      cd HTKTools
+      nmake /f htk_htktools_nt.mkf all
+      cd ..
+      cd HLMLib
+      nmake /f htk_hlmlib_nt.mkf all
+      cd ..
+      cd HLMTools
+      nmake /f htk_hlmtools_nt.mkf all
+      cd ..
+
+  Installation:
+  The HTK tools have now been built and are in the bin.win32
+  directory. You should add this directory to your PATH, so that you can
+  run them easily from the command line in future.
+
+
+  Testing the Installation
+  ========================
+
+  Among the samples on the HTK website you'll find the HTKDemo package
+  that can be used to test your installation. See
+  http://htk.eng.cam.ac.uk/download.shtml for download instructions.
+
+  As an initial test of the installation please run the HTK
+  demonstration using the configuration file
+  HTKDemo/configs/monPlainM1S1.dcf. There is a README file in the
+  HTKDemo directory explaining the operation of the demonstration in
+  detail but, in short, you need to run the demonstration script passing
+  it the configuration file configs/monPlainM1S1.dcf as input. 
+  To test the language modelling tools you should follow the tutorial
+  in the HTK book, using the files in the LMTutorial/ directory.
+
+  Before running the demo make sure you have compiled all the HTK tools
+  and the executables are in your PATH, i.e. just typing 'HInit' at the
+  commandline prints a short usage summary. To run the demonstration
+  type:
+
+  $ cd HTKDemo
+  $ ./runDemo configs/monPlainM1S1.dcf
+
+  The recognition results obtained should match the following.
+
+  On the training set:
+  ------------------------ Overall Results --------------------------
+  SENT: %Correct=0.00 [H=0, S=7, N=7]
+  WORD: %Corr=77.63, Acc=74.89 [H=170, D=37, S=12, I=6, N=219]
+  ===================================================================
+
+  On the test set:
+  ------------------------ Overall Results --------------------------
+  SENT: %Correct=0.00 [H=0, S=3, N=3]
+  WORD: %Corr=63.91, Acc=59.40 [H=85, D=35, S=13, I=6, N=133]
+  ===================================================================
+
+  NB to run this demo under Windows you must have perl installed and you
+  need to invoke perl explicitly. See http://www.perl.org/ to download
+  the perl distribution. The script runDemo.pl should be used in place
+  of runDemo i.e. to run the test above type
+
+   > perl runDemo.pl configs\monPlainM1S1.dcf
+   
+ 
+ 
+ 
+大致上说一下：
+1.安装Microsoft Visual Studio开发环境（以下简称VS），因为HTK代码需要通过VS来编译。
+
+安装ActivePerl工具，测试的时候需要用到Perl命令
+
+安装解压缩工具（解压下载下来的HTK文档）
+
+如果对DOS命令行窗口及命令语句熟悉就更好了，在编译、安装和运行HTK时都需要它。
+
+添加环境变量：在系统环境变量里添加VS2015（这个任意的vs环境即可）下VC环境的bin路径，如我使用vs2015，并将其安装在D盘，就需要将以下路径添加到环境变量Path中：D:\vs2015\VC\bin。
+
+
+1、打开命令行
+
+2、 进入 e:\htk 目录。（我把htk解压到e盘了）
+
+3、建立文件夹： mk bin.win32
+
+4、运行命令：VCVARS32。如果提示找不到命令，大概解决办法是安装VC++6.0 或者其后版本。
+
+5、输入如下命令，来编译HTK Library:
+ 
+ cd HTKLib（进入路径）
+nmake /f htk_htklib_nt.mkf all
+cd ..
+
+同理编译HTK TOOLS ,输入以下命令：
+cd HTKTools
+ nmake /f htk_htktools_nt.mkf all
+cd ..
+cd HLMLib
+nmake /f htk_hlmlib_nt.mkf all
+cd ..
+cd HLMTools
+nmake /f htk_hlmtools_nt.mkf all
+cd ..
+
+6.编译成功后打开bin.win32是这样的：
+               HSLab.exe     录音，标记工具
+               Hcopy.exe     从语音提取特征参数的工具
+               HInit.exe 和 HCompV.exe 对HMM模型初始化的工具，注意，这里需要对每个模型都要使用此命令进行初始化
+               HRest.exe     对模型进行迭代训练的工具
+               HParse.exe    语法转网络的工具，发音转本文用到的。
+               HSGen.exe    语法查错工具
+               HVite.exe      解码工具，也就是识别工具。可以用命令行方式使用，也可以用交互方式使用。
+
+
+7.进行测试，是否安装成功
+
+把samples解压到htk文件夹中，
+ 配置环境变量输入命令 path=%path%;e:\htk\bin.win32
+
+              测试，输入命令  HInit，出现option
+
+              然后使用如下命令（测试Demo）：
+
+              cd HTKDemo
+              mkdir hmms
+              cd hmms
+              mkdir tmp
+              mkdir hmm.0
+              mkdir hmm.1
+              mkdir hmm.2
+              mkdir hmm.3
+              cd ..
+              mkdir proto
+              mkdir acc
+              mkdir test
+              perl runDemo.pl configs\monPlainM1S1.dcf
+              
+  如果无法识别HSLab不是内部命令，将将htk目录下的HTKLib中的HGraf.null.obj替换为HGraf_WIN32.obj、HGraf.null.olv替换为 HGraf_WIN32.olv。
+
+              测试完成，ok了  ，碰到问题，找谷歌，用英文找。
