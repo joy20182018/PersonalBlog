@@ -1,0 +1,995 @@
+﻿列表可修改，字符串不可修改
+
+python的set和其他语言类似, 是一个无序不重复元素集, 集合对象还支持union(联合),intersection(交), difference(差)和sysmmetric difference(对称差集)等数学运算. sets 支持 x in set, len(set),和 for x in set。作为一个无序的集合，sets不记录元素位置或者插入点。
+与列表和元组不同，集合是无序的，也无法通过数字进行索引。此外，集合中的元素不能重复。
+
+集合支持一系列标准操作，包括并集、交集、差集和对称差集，例如：   a = t | s    # t 和 s的并集 b = t & s          # t 和 s的交集 c = t – s          # 求差集（项在t中，但不在s中） d = t ^ s          # 对称差集（项在t或s中，但不会同时出现在二者中）
+
+os.startfile(r'C:\Users\Administrator\AppData\Local\360Chrome\Chrome\Application\360chrome.exe')# 打开网页，打开文件夹等
+
+list函数将字符串分割成单独的字符。如果你想将一个字符串分割成一些单词，你可以使用 split 方法：
+
+>>> s = 'pining for the fjords'
+>>> t = s.split()
+>>> t
+['pining', 'for', 'the', 'fjords']
+
+
+
+>>> print("Hello","World", sep="***")
+Hello***World
+>>> print("Hello","World", end="***")
+Hello World***>>>
+sqlist=[x*x for x in 0(1,11) if x%2 != 0]# 列表推倒式
+
+异常处理语句 try...except...finally
+except和finally必须有其中一个
+
+__init__函数定义了类中的构造函数，若init函数中除了self外还有其他参数，则在初始化类时需要外部传递参数进去。
+
+super()函数，在子类中调用父类的方法，如果该子类有多个父类，则按继承顺序调用第一个父类
+
+一个算法要同时考虑空间和时间上的关系，时间适中占用空间适中，若为一个嵌入式平台，内存较小，空间要更多的考虑一下
+···列表操作
+pop()              O(1)
+pop(k)             O(n)
+index[]            O(1)
+append()           O(1)
+insert(i, item)    O(1)
+del operate        O(n)
+set()              O(n+k)
+reverse()          O(n)
+sort()             O(nlogn)
+multiply()         O(nk)
+
+···字典操作
+contains(in)       O(1)
+copy()             O(n)
+时间复杂度：
+https://wiki.python.org/moin/TimeComplexity
+
+range和xrange是相同功能的，range返回一个列表，xrange是一个生成器，xrange做循环的性能比range好，尤其是返回很大的时候。尽量用xrange吧，除非你是要返回一个列表。
+
+单斜杠（/）表示除法，且不管除数和被除数是不是整数，最后结果都是float类型。
+双斜杠（//）表示即先做除法（/），然后向下取整（floor）。至少有一方是float型时，结果为float型；两个数都是int型时，结果为int型
+百分号（%）表示取余，得到余数
+
+isinstance(object, classinfo) # 判断一个对象是否是一个已知类型
+object---实例对象
+classinfo---基本类型名称
+
+字符串本质上是一个列表
+for i in 'google':
+   print(i)
+
+>>>g
+   o
+   o
+   g
+   l
+   e
+
+b = ['g', 'o']
+c = ''.join(b)
+c = 'go'
+
+列表里 a 与 a[:] 不同。
+我们可以通过函数 id() 来查看：
+>>>a = [1, 2, 3]
+>>>id(a)
+>>>id(a[:])
+会发现得到的两个值不同。
+或者直接运行：
+>>>a is a[:]
+返回值将是：False。
+简单来说，a[:] 是创建 a 的一个副本，这样我们在代码中对 a[:] 进行操作后，就不会改变 a 的值了。而若直接对 a 进行操作，那么 a 的值会收到一些操作的影响，如 append() 等。
+
+
+>>>a = 2
+>>> isinstance (a,int)
+True
+>>> isinstance (a,str)
+False
+>>> isinstance (a,(str,int,list))# 是元组中的一个返回 True
+True
+# 计算等式的值
+def doMath(op, op1, op2):
+   if op == "*":
+      return op1 * op2
+   elif op == "/":
+      return op1 / op2
+   elif op == "+":
+      return op1 + op2
+   else:
+      return op1 - op2
+
+
+封装（encapsilation）将一段代码包装在函数里
+泛化（gengralization）为函数增加一个形参，多个形参的函数调用时除第一个外其余的要加形参名
+函数的接口：是一份关于如何使用该函数的总结： 形参是什么？函数做什么？返回值是什么？ 如果接口让调用者避免处理不必要的细节，直接做自己想做的事，那么这个接口就是“干净的”。
+重构（refactoring）重新整理一个程序以改进函数接口和促进代码复用的这个过程
+
+
+random.seed(x)改变随机数生成器的种子seed。
+
+一般不必特别去设定seed，Python会自动选择seed。
+
+random.random()    用于生成一个随机浮点数n,0 <= n < 1
+random.uniform(a,b)    用于生成一个指定范围内的随机浮点数，生成的随机整数a<=n<=b;
+random.randint(a,b)    用于生成一个指定范围内的整数，a为下限，b为上限，生成的随机整数a<=n<=b;若a=b，则n=a；若a>b，报错
+random.randrange([start], stop [,step])    从指定范围[start,stop)内，按指定基数递增的集合中获取一个随机数，基数缺省值为1
+random.choice(sequence)    从序列中获取一个随机元素，参数sequence表示一个有序类型，并不是一种特定类型，泛指list，tuple，字符串等
+random.shuffle(x[,random])    用于将一个列表中的元素打乱 （洗牌），会改变原始列表
+random.sample(sequence,k)    从指定序列中随机获取k个元素作为一个片段返回，不会改变原有序列
+
+
+
+
+
+···栈
+
+规定列表起始段为栈底，末端为栈顶
+push(item)将一个新项添加到栈的顶部。 它需要 item 做参数并不返回任何内容。
+pop() 从栈中删除顶部项。 它不需要参数并返回 item 。 栈被修改。
+peek() 从栈返回顶部项， 但不会删除它。 不需要参数。 不修改栈。
+isEmpty() 测试栈是否为空。 不需要参数， 并返回布尔值。
+size() 返回栈中的 item 数量。 不需要参数， 并返回一个整数。
+exhibitStack() 显示栈中内容，以查找bug
+
+···单端队列（随意规定列首列尾）
+
+并规定列表起始段为队首，列表末段位队尾
+Queue() 创建一个空的新队列。 它不需要参数， 并返回一个空队列。
+enqueue(item) 将新项添加到队尾。 它需要 item 作为参数， 并不返回任何内容。
+dequeue() 从队首移除项。 它不需要参数并返回 item。 队列被修改。
+isEmpty() 查看队列是否为空。 它不需要参数， 并返回布尔值。
+size() 返回队列中的项数。 它不需要参数， 并返回一个整数。
+
+···双端队列
+Deque() 创建一个空的新 deque。 它不需要参数， 并返回空的 deque。
+addFront(item) 将一个新项添加到 deque 的首部。 它需要 item 参数 并不返回任何内容。
+addRear(item) 将一个新项添加到 deque 的尾部。 它需要 item 参数并不返回任何内容。
+removeFront() 从 deque 中删除首项。 它不需要参数并返回 item。 deque 被修改。
+removeRear() 从 deque 中删除尾项。 它不需要参数并返回 item。 deque 被修改。
+isEmpty() 测试 deque 是否为空。 它不需要参数， 并返回布尔值。
+size() 返回 deque 中的项数。 它不需要参数， 并返回一个整数。
+
+···无序列表：
+List() 创建一个新的空列表。 它不需要参数， 并返回一个空列表。
+add(item) 向列表中添加一个新项。 它需要 item 作为参数， 并不返回任何内容。 假定该 item 不在列表中。
+remove(item) 从列表中删除该项。 它需要 item 作为参数并修改列表。 假设项存在于列表中。
+search(item) 搜索列表中的项目。 它需要 item 作为参数， 并返回一个布尔值。
+isEmpty() 检查列表是否为空。 它不需要参数， 并返回布尔值。
+size（）返回列表中的项数。 它不需要参数， 并返回一个整数。
+append(item) 将一个新项添加到列表的末尾， 使其成为集合中的最后一项。 它需要 item 作为参数， 并不返回任何
+内容。 假定该项不在列表中。
+index(item) 返回项在列表中的位置。 它需要 item 作为参数并返回索引。 假定该项在列表中。
+insert(pos， item) 在位置 pos 处向列表中添加一个新项。 它需要 item 作为参数并不返回任何内容。 假设该项不在
+列表中， 并且有足够的现有项使其有 pos 的位置。
+pop() 删除并返回列表中的最后一个项。 假设该列表至少有一个项。
+pop(pos) 删除并返回位置 pos 处的项。 它需要 pos 作为参数并返回项。 假定该项在列表中
+
+···有序列表抽象数据结构：
+OrderedList() 创建一个新的空列表。它不需要参数，并返回一个空列表。
+add(item) 向列表中添加一个新项。它需要 item 作为参数， 并不返回任何内容。 假定该 item 不在列表中。
+remove(item) 从列表中删除该项。它需要 item 作为参数并修改列表。 假设项存在于列表中。
+search(item) 搜索列表中的项目。它需要 item 作为参数， 并返回一个布尔值。
+isEmpty() 检查列表是否为空。它不需要参数， 并返回布尔值。
+size（）返回列表中的项数。它不需要参数， 并返回一个整数。
+index(item) 返回项在列表中的位置。它需要 item 作为参数并返回索引。 假定该项在列表中。
+pop() 删除并返回列表中的最后一个项，假设该列表至少有一个项。
+pop(pos) 删除并返回位置 pos 处的项。它需要 pos 作为参数并返回项。 假定该项在列表中。
+
+顺序表存储：
+数据内置：将数据存在开辟的空间中，顺序表存储值
+数据外置存储：数据地址随机分配，顺序表存储地址值，地址指向数据
+单链表节点：元素（数据）+连接区域（下一个节点位置，即下一个节点的类实例）
+单链表：
+class LNode(object):
+    #结点初始化函数, p 即模拟所存放的下一个结点的地址
+    #为了方便传参, 设置 p 的默认值为 0 ，或None
+    def __init__(self, data, p=0):
+        self.data = data
+        self.next = p
+
+class LinkList(object):
+    def __init__(self):
+        self.head = None
+
+    #链表初始化函数, 方法类似于尾插
+    def initList(self, data):
+        #创建头结点
+        self.head = LNode(data[0])
+        p = self.head
+        #逐个为 data 内的数据创建结点, 建立链表
+        for i in data[1:]:
+            node = LNode(i)
+            p.next = node  # 指向下个节点的实例
+            p = p.next
+
+    #链表判空
+    def isEmpty(self):
+        if self.head.next == 0:
+            print "Empty List!"
+            return 1
+        else:
+            return 0
+
+    #取链表长度
+    def getLength(self):
+        if self.isEmpty():
+            exit(0)
+
+        p = self.head
+        len = 0
+        while p:
+            len += 1
+            p = p.next
+        return len
+
+    #遍历链表
+    def traveList(self):
+        if self.isEmpty():
+            exit(0)
+        print '\rlink list traving result: ',
+        p = self.head
+        while p:
+            print p.data,
+            p = p.next
+
+    #链表插入数据函数
+    def insertElem(self, key, index):
+        if self.isEmpty():
+            exit(0)
+        if index<0 or index>self.getLength()-1:
+            print "\rKey Error! Program Exit."
+            exit(0)
+
+        p = self.head
+        i = 0
+        while i<=index:
+            pre = p
+            p = p.next
+            i += 1
+
+        #遍历找到索引值为 index 的结点后, 在其后面插入结点
+        node = LNode(key)
+        pre.next = node
+        node.next = p
+
+    #链表删除数据函数
+    def deleteElem(self, index):
+        if self.isEmpty():
+            exit(0)
+        if index<0 or index>self.getLength()-1:
+            print "\rValue Error! Program Exit."
+            exit(0)
+
+        i = 0
+        p = self.head
+        #遍历找到索引值为 index 的结点
+        while p.next:
+            pre = p
+            p = p.next
+            i += 1
+            if i==index:
+                pre.next = p.next
+                p = None
+                return 1
+
+        #p的下一个结点为空说明到了最后一个结点, 删除之即可
+        pre.next = None
+
+if __name__ = "__main__":
+    #初始化链表与数据
+    data = [1,2,3,4,5]
+    l = LinkList()
+    l.initList(data)
+    l.traveList()
+
+    #插入结点到索引值为3之后, 值为666
+    l.insertElem(666, 3)
+    l.traveList()
+
+    #删除索引值为4的结点
+    l.deleteElem(4)
+    l.traveList()
+
+
+···递归三定律：
+1.递归算法必须具有基本情况（算法停止的条件）。
+2.递归算法必须改变状态去靠近基本情况。（每次调用函数需要改变一些参数）
+3.递归算法必须以递归方式调用自身
+递归：把问题分解成更简单更已操作的问题
+
+搜索算法：
+顺序搜索：无序列表搜索，有序列表搜索
+二分查找
+def binarySearch(alist, item):
+    first = 0
+    last = len(alist)-1
+    found = False
+    while first<=last and not found:
+        midpoint = (first + last)//2
+        if alist[midpoint] == item:
+            found = True
+        else:
+            if item < alist[midpoint]:
+                last = midpoint-1
+            else:
+                first = midpoint+1
+    return found
+改进用递归二分查找：
+def binarySearch(alist, item):
+    if len(alist) == 0:
+        return False
+    else:
+        midpoint = len(alist)//2
+        if alist[midpoint]==item:
+            return True
+        else:
+            if item<alist[midpoint]:
+                return binarySearch(alist[:midpoint],item)
+            else:
+                return binarySearch(alist[midpoint+1:],item)
+
+
+···Hash查找：（恒定时间查找算法）
+map：表
+槽位置：项值/表长
+散列函数：项的值与该项在哈希表中槽位置的映射关系。
+设项值a，hash长度l，b=a%l即得槽位置，a与b的关系称哈希函数
+负载因子：λ=项数/表大小
+两个以上的项在同一个槽中，这种现象叫碰撞（冲突）
+构造散列函数：分组求和法，平方取中法
+ord('c') #计算字符的ASCII值
+重新散列：在冲突之后寻找另一个槽的处理过程
+哈希表大小尽量为质数
+
+map数据类型：
+Map() 创建一个新的 map 。 它返回一个空的 map 集合。
+put(key， val) 向 map 中添加一个新的键值对。 如果键已经在 map 中， 那么用新值替换旧值。
+get(key) 给定一个键， 返回存储在 map 中的值或 None。
+del 使用 del map[key] 形式的语句从 map 中删除键值对。
+len() 返回存储在 map 中的键值对的数量。
+in 返回 True 对于 key in map 语句， 如果给定的键在 map 中， 否则为False。
+
+class HashTable:
+	def __init__(self):
+		self.size = 11
+		self.slots = [None] * self.size
+		self.data = [None] * self.size
+
+    def hash(astring, tablesize):
+    sum = 0
+    for pos in range(len(astring)):
+        sum = sum + ord(astring[pos])
+
+    return sum%tablesize
+
+
+
+
+
+
+
+Python允许你同时为多个变量赋值。例如：
+a = b = c = 1
+以上实例，创建一个整型对象，值为1，三个变量被分配到相同的内存空间上。
+您也可以为多个对象指定多个变量。例如：
+a, b, c = 1, 2, "john"
+以上实例，两个整型对象1和2的分配给变量a和b，字符串对象"john"分配给变量c。
+
+冒泡排序：每次遍历都有交换
+def swap(arr, i, j) # 交换顺序函数
+   temp = arr[i]
+   arr[i] = arr[j]
+   arr[j] = temp
+算法复杂度O(n^2)
+改进：短冒泡排序
+def shortBubbleSort(alist):
+    exchanges = True
+    passnum = len(alist)-1
+    while passnum > 0 and exchanges:
+        exchanges = False
+        for i in range(passnum):
+            if alist[i]>alist[i+1]:
+                exchanges = True
+                alist[i], alist[i+1] = alist[i+1], alist[i]
+
+            passnum = passnum-1
+
+选择排序：每次遍历只交换一次位置，找到最大的那个放到特定的位置
+算法复杂度O(n^2)
+def SelectSort(alist): # 外层循环用于交换，内层用于遍历找最大值
+    for pushCount in range(len(alist) - 1, 0, -1):
+        max = 0
+        for value in range(1, pushCount+1):
+            if alist[pushCount] > alist[max]:
+                max = pushCount
+
+        alist[max],alist[pushCount] = alist[pushCount], alist[max] # python版交换方式
+
+插入排序：
+复杂度：O(n^2)
+第一种：
+def insertionSort(alist):
+    # 外层对每一个数进行遍历，内层负责对这个数与之前c的数进行比较，判断大小，并交换位置
+    # 如果等于或大了则把这个数放在这个位置
+    for index in range(1,len(alist)):
+        currentvalue = alist[index]
+        position = index
+        while position>0 and alist[position-1]>currentvalue:
+            alist[position]=alist[position-1]
+            position = position-1
+
+        alist[position]=currentvalue
+第二种：
+def Insert_Sort(alist):
+    # j 代表内层循环
+    # 从右边的无序序列中取出多少个元素执行这样的操作
+    for j in range(1,len(alist)):
+        # i 代表内层循环
+        # 执行从右边无序序列中取出元素，即i位置的元素，然后将其插入到前面的序列中
+        i = j
+        while i > 0 or alist[i] > alist[i+1]:
+            if alist[i] < alist[i-1]:
+                alist[i],alist[i+1] = alist[i+1],alist[i]
+                i -= 1
+
+
+希尔排序：（递减增量排序）一种不稳定的排序方法
+核心算法依旧是插入排序
+希尔排序是基于插入排序的以下两点性质而提出改进方法的：
+插入排序在对几乎已经排好序的数据操作时，效率高，即可以达到线性排序的效率
+但插入排序一般来说是低效的，因为插入排序每次只能将数据移动一位
+def shellsort(alist):
+    sublistcount = len(alist) // 2
+    while sublistcount > 0:
+        for startposition in range(sublistcount):
+            gapInsertionSort(alist, startposition, sublistcount)
+        print("After incements of size", sublistcount, "the list is value", alist)
+
+        sublistcount = sublistcount // 2
+
+def gapInsertionSort(alist, start, gap): # 对子列进行排序
+    for i in range(start+gap, len(alist), gap):# gap 步长
+        currentvalue = alist[i]
+        position = i
+
+        while position >= gap and alist[position - gap] > currentvalue:
+            alist[position] = alist[position-gap]
+
+        alist[position] = currentvalue
+
+第二种：
+
+
+
+
+归并排序： O(nlog n)
+把一个列表不断拆分为两个，最后列表为空或只有一项时，开始合并进行排序
+def mergeSort(alist):
+    print("Splitting ",alist)
+    if len(alist)>1:
+        mid = len(alist)//2
+        lefthalf = alist[:mid]
+        righthalf = alist[mid:]
+
+        mergeSort(lefthalf)
+        mergeSort(righthalf)
+
+        i=0
+        j=0
+        k=0
+        while i < len(lefthalf) and j < len(righthalf):
+            if lefthalf[i] < righthalf[j]:
+                alist[k]=lefthalf[i]
+                i=i+1
+            else:
+                alist[k]=righthalf[j]
+                j=j+1
+            k=k+1
+
+        while i < len(lefthalf):
+            alist[k]=lefthalf[i]
+            i=i+1
+            k=k+1
+
+        while j < len(righthalf):
+            alist[k]=righthalf[j]
+            j=j+1
+            k=k+1
+
+    print("Merging ",alist)
+
+快速排序：找一个枢纽值，以这个值为中心按大小进行分类，小于该值排左，大于该值排右，然后两边递归相同的操作
+复杂度：O(nlog n)
+def quickSort(alist):
+    quickSortHelper(alist, 0 , len(alist) - 1) # 定第一个点为枢纽值
+
+def quickSortHelper(alist, first, last):
+    if first < last:
+        splitpoint = partition(alist, first, last)
+        quickSortHelper(alist, first, splitpoint - 1)
+        quickSortHelper(alist, splitpoint + 1, last)
+
+def partition(alist, first, last):
+    pivotvalue = alist[first]
+    leftmark = first + 1
+    rightmark = last
+
+    done = False
+    while not done:
+
+        while leftmark <= rightmark and alist[leftmark] <= pivotvalue:
+            leftmark = leftmark + 1
+
+        while alist[rightmark] >= pivotvalue and rightmark >= leftmark:
+             rightmark = rightmark - 1
+
+        if rightmark < leftmark:
+            done = True
+        else:
+            temp = alist[leftmark]
+            alist[leftmark] = alist[rightmark]
+            alist[rightmark] = temp
+
+    temp = alist[first]
+    alist[first] = alist[rightmark]
+    alist[rightmark] = temp
+
+    return rightmark
+
+
+
+二叉树：
+def BinaryTree:
+    def __init__(self,rootObj):
+        self.key = rootObj
+        self.leftChild = None
+        self.rightChild = None
+
+    def insertLeft(self,newNode):
+        if self.leftChild == None:
+            self.leftChild = BinaryTree(newNode)
+        else:          # 此时该节点有左孩子
+            t = BinaryTree(newNode)
+            t.leftChild = self.leftChild
+            self.leftChild = t
+
+    def insertRight(self,newNode):
+        if self.rightChild ==None:
+            self.rightChild = BinaryTree(newNode)
+        else:         # 此时该节点有右孩子
+            t = BinaryTree(newNode)
+            t.leftChild = self.leftChild
+            self.leftChild = t
+
+    def getRightChild(self):
+        return self.rightChild
+
+    def getleftChild(self):
+        return self.leftChild
+
+    def setRootValue(self.Obj):
+        self.key = obj
+
+    def getRootValue(self):
+        return self.key
+
+
+# 前序遍历   根-->左-->右
+def preorder(tree):
+    if tree:
+        print(tree.getRootValue())
+        preorder(tree.getleftChild())
+        preorder(tree.getRightChild())
+
+# 后序遍历
+def postorder(tree):
+    if tree:
+        postorder(tree.getleftChild())
+        postorder(tree.getRightChild())
+        print(tree.getRootValue())
+
+优先级队列 = 队列 + 排序（通常使用二叉堆 O(logn)）
+根节点最大的堆：最大堆
+基本操作：
+BinaryHeap()	创建一个新的，空的二叉堆。
+insert(k)	向堆添加一个新项。
+findMin()	返回具有最小键值的项，并将项留在堆中。
+delMin()	返回具有最小键值的项，从堆中删除该项。 如果堆是空的
+isEmpty()	返回	true，否则返回	false。
+size()	返回堆中的项数。
+buildHeap(list)	从键列表构建一个新的堆。
+
+def BinHeap:   # 可以构造一个列表，n为根，左节点2n。右节点2n+1
+    def __init__(self):
+        self.heapList = [0]  # 便于整除
+        self.currentSize = 0
+
+    def percUp(self,i):  # 对树从下到上进行遍历，并对不满足堆属性的进行交换,维护堆属性
+        while i // 2 > 0:
+            if self.heapList[i] < self.heapList[i // 2]:
+                tmp = self.heapList[i // 2]
+                self.heapList[i // 2] = self.heapList[i]
+                self.heapList[i] = tmp
+            i = i // 2
+
+    def insert(self,k):
+        self.heapList.append(k)
+        self.currentSize = self.currentSize + 1
+        self.percUp(self.currentSize)
+
+
+	def delMin(self):
+		retval = self.heapList[1]
+		self.heapList[1]=self.heapList[self.currentSize]
+		self.currentSize = self.currentSize -1
+		self.heapList.pop()
+		self.percDown(1)
+		return	retval
+
+
+二叉查找树：
+class	BinarySearchTree:
+	def	__init__(self):
+	    self.root	=	None
+	    self.size	=	0
+
+	def	length(self):
+	    return	self.size
+
+	def	__len__(self):
+	    return	self.size
+	def	__iter__(self):
+	    return	self.root.__iter__()
+
+如果节点没有子节点，则高度为 0
+如果节点只有一个子节点，则高度为该子节点的高度加 1
+如果节点有两个子节点，则高度为两个子节点中高度较高的加 1
+
+平衡二叉搜索树：（AVL树）
+需要保持如下平衡条件：节点 n 的左子树的高度与右子树的高度的差至多是 1
+如果节点仅有一个子节点，则无子节点侧的高度为 -1
+
+
+
+图：
+图抽象数据类型（ADT）定义如下：
+Graph()	创建一个新的空图。 addVertex(vert)	向图中添加一个顶点实例。 addEdge(fromVert,	toVert)	向连接两个顶点的图添加一个新的有向边。 addEdge(fromVert,	toVert,	weight)	向连接两个顶点的图添加一个新的加权的有向边。 getVertex(vertKey)	在图中找到名为		vertKey		的顶点。 getVertices()	返回图中所有顶点的列表。 in	返回	True	如果		vertex	in	graph		里给定的顶点在图中，否则返回False
+
+邻接表的实现： 用字典进行存储
+class Vertex:  # 表示图中每个顶点
+    def __init__(self,key):
+        self.id = key  # 顶点值
+        self.connectedTo = {}  # 要连接的对象
+
+    def addNeighbor(self, nbr,weigh = 0): # 邻近点  边的权重
+        self.connectedTo[nbr] = weight
+
+    def __str__(self): # 当打印一个实例时会自动调用str方法，返回一个字符串
+        return str(self.id) + 'connectedTo:'+ str([x.id for x in self.connectedTo])
+
+    def getConnections(self):  # 返回改该顶点连接的点
+        return self.connectedTo.keys()
+
+    def getId(self):  # 返回该顶点
+        return self.id
+
+    def getWeight(self, nbr): # 返回权重
+        return self.connectedTo[nbr]
+
+class Graph:
+    def __init__(self):
+        self.vertList = {}  # 顶点列表
+        self.numVertices = 0  # 顶点数
+
+    def addVertex(self,key): # 添加顶点并返回顶点值
+        self.numVertices = self.numVertices + 1
+        newVertex = Vertex(key)
+        self.vertList[key] = newVertex
+        return newVertex
+
+    def getVertex(self,n): # 遍历邻接表中顶点并返回
+        if n in self.vertList:
+            return self.verList[n]
+        else:
+            return None
+
+    def __contains__(self,n):
+        return n in self.vertList
+
+    def addEdge(self, f, t, cost=0); # 添加边
+    if f not in self.verList:
+        nv = self.addVertex(f)
+    if t not in self.vertList:
+        nv = self.addVertex
+    self.vertList[f].addNeighbor(self.vertList[t], cost)
+
+    def getVertices(self):
+        return self.vertList.keys()
+
+    def __iter__(self): # 迭代器
+        return iter(self.vertList.values())
+
+
+广度优先搜索算法（BFS）：
+从根节点开始，沿着树的宽度遍历树的节点。如果所有节点均被访问，则算法中止
+
+"""
+ procedure BFS(G,v) is
+     let Q be a queue
+     Q.enqueue(v)
+     label v as discovered
+     while Q is not empty
+        v ← Q.dequeue()
+        procedure(v)
+        for all edges from v to w in G.adjacentEdges(v) do
+            if w is not labeled as discovered
+                Q.enqueue(w)
+                label w as discovered
+"""
+def procedure(v):
+    pass
+
+def BFS(G,v0):
+    """ 广度优先搜索 """
+    q, s = [], set()
+    q.extend(v0)
+    s.add(v0)
+    while q:    # 当队列q非空
+        v = q.pop(0)
+        procedure(v)
+        for w in G[v]:     # 对图G中顶点v的所有邻近点w
+            if w not in s: # 如果顶点 w 没被发现
+                q.extend(w)
+                s.add(w)    # 记录w已被发现
+
+深度优先搜索算法（DFS）：
+沿着树的深度遍历树的节点，尽可能深的搜索树的分支。当节点v的所在边都己被探寻过，搜索将回溯到发现节点v的那条边的起始节点。这一过程一直进行到已发现从源节点可达的所有节点为止。如果还存在未被发现的节点，则选择其中一个作为源节点并重复以上过程，整个进程反复进行直到所有节点都被访问为止
+""""
+Pseudocode[edit]
+Input: A graph G and a vertex v of G
+
+Output: All vertices reachable from v labeled as discovered
+
+A recursive implementation of DFS:[5]
+
+1  procedure DFS(G,v):
+2      label v as discovered
+3      for all edges from v to w in G.adjacentEdges(v) do
+4          if vertex w is not labeled as discovered then
+5              recursively call DFS(G,w)
+A non-recursive implementation of DFS:[6]
+
+1  procedure DFS-iterative(G,v):
+2      let S be a stack
+3      S.push(v)
+4      while S is not empty
+5            v = S.pop()
+6            if v is not labeled as discovered:
+7                label v as discovered
+8                for all edges from v to w in G.adjacentEdges(v) do
+9                    S.push(w)
+"""
+
+def DFS(G,v0):
+    S = []
+    S.append(v0)
+    label = set()
+    while S:
+        v = S.pop()
+        if v not in label:
+            label.add(v)
+            procedure(v)
+            for w in G[v]:
+                S.append(w)
+
+
+
+迪杰斯特拉算法：解决有向图最短路径问题
+# dijkstra算法实现，有向图和路由的源点作为函数的输入，最短路径最为输出
+def dijkstra(graph,src):
+    # 判断图是否为空，如果为空直接退出
+    if graph is None:
+        return None
+    nodes = [i for i in range(len(graph))]  # 获取图中所有节点
+    visited=[]  # 表示已经路由到最短路径的节点集合
+    if src in nodes:
+        visited.append(src)
+        nodes.remove(src)
+    else:
+        return None
+    distance={src:0}  # 记录源节点到各个节点的距离
+    for i in nodes:
+        distance[i]=graph[src][i]  # 初始化
+    # print(distance)
+    path={src:{src:[]}}  # 记录源节点到每个节点的路径
+    k=pre=src
+    while nodes:
+        mid_distance=float('inf')
+        for v in visited:
+            for d in nodes:
+                new_distance = graph[src][v]+graph[v][d]
+                if new_distance < mid_distance:
+                    mid_distance=new_distance
+                    graph[src][d]=new_distance  # 进行距离更新
+                    k=d
+                    pre=v
+        distance[k]=mid_distance  # 最短路径
+        path[src][k]=[i for i in path[src][pre]]
+        path[src][k].append(k)
+        # 更新两个节点集合
+        visited.append(k)
+        nodes.remove(k)
+        print(visited,nodes)  # 输出节点的添加过程
+    return distance,path
+
+
+
+各种错误：
+1. object of type 'Response' has no len()： requests.get()得到的是一个response对象，无法用BeautifulSoup解析，如果要解析，解析对象应该是requests.get().content，html = requests.get('http://www.jianshu.com').content
+
+
+2.IndentationError:expected an indented block   缩进错误
+
+3.'numpy.ndarray' object is not callable  'numpy.ndarray'对象不可调用
+
+4.OSError: [Errno 22] Invalid argument: 操作步骤：将盘符’E’修改为‘e’;将转义字符’\’修改为’/’,即可运行通过。（大部分情况不需要进行此操作，大小写无所谓）
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+numpy
+np.dot(a,b)  # 点乘
+a*b  #向量逐位相乘
+
+
+
+
+
+
+
+pandas
+df.shape 表格大小
+len(df)行数
+
+
+
+
+
+
+
+
+
+
+import matplot.pyplot as plt画图，与numpy结合使用
+
+
+
+
+
+
+
+
+
+
+
+
+ord(字符串)  # 字符串转ASCII码
+chr(ASCII码)  # ASCII转字符
+# 总结
+# ^ 匹配字符串的开始。
+# $ 匹配字符串的结尾。
+# \b 匹配一个单词的边界。
+# \d 匹配任意数字。
+# \D 匹配任意非数字字符。
+# x? 匹配一个可选的 x 字符 (换言之，它匹配 1 次或者 0 次 x 字符)。
+# x* 匹配0次或者多次 x 字符。
+# x+ 匹配1次或者多次 x 字符。
+# x{n,m} 匹配 x 字符，至少 n 次，至多 m 次。
+# (a|b|c) 要么匹配 a，要么匹配 b，要么匹配 c。
+# (x) 一般情况下表示一个记忆组 (remembered group)。你可以利用 re.search 函数返回对象的 groups() 函数获取它的值。
+## 正则表达式中的点号通常意味着 “匹配任意单字符”
+报错：Expected string or bytes-like object
+只需将传递的对象转成字符串就可以了。
+if isinstance(a,int):
+    print "a is int"
+else:  # 判断是否为整型变量
+
+
+异常处理
+try:
+<语句>        #运行别的代码
+except <名字>：
+<语句>        #如果在try部份引发了'name'异常
+except <名字>，<数据>:
+<语句>        #如果引发了'name'异常，获得附加的数据
+else:
+<语句>        #如果没有异常发生
+try的工作原理是，当开始一个try语句后，python就在当前程序的上下文中作标记，这样当异常出现时就可以回到这里，try子句先执行，接下来会发生什么依赖于执行时是否出现异常。
+
+如果当try后的语句执行时发生异常，python就跳回到try并执行第一个匹配该异常的except子句，异常处理完毕，控制流就通过整个try语句（除非在处理异常时又引发新的异常）。
+如果在try后的语句里发生了异常，却没有匹配的except子句，异常将被递交到上层的try，或者到程序的最上层（这样将结束程序，并打印缺省的出错信息）。
+如果在try子句执行时没有发生异常，python将执行else语句后的语句（如果有else的话），然后控制流通过整个try语句。
+
+
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+
+try:
+    1 / 0
+except Exception as e:
+    '''异常的父类，可以捕获所有的异常'''
+    print "0不能被除"
+else:
+    '''保护不抛出异常的代码'''
+    print "没有异常"
+finally:
+    print "最后总是要执行我"
+
+
+
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+
+#This is note foe exception
+try：
+  code    #需要判断是否会抛出异常的代码，如果没有异常处理，python会直接停止执行程序
+
+except:  #这里会捕捉到上面代码中的异常，并根据异常抛出异常处理信息
+#except ExceptionName，args：    #同时也可以接受异常名称和参数，针对不同形式的异常做处理
+
+  code  #这里执行异常处理的相关代码，打印输出等
+else：  #如果没有异常则执行else
+
+  code  #try部分被正常执行后执行的代码
+finally：
+  code  #退出try语句块总会执行的程序
+
+
+
+#函数中做异常检测
+def try_exception(num):
+  try:
+    return int(num)
+  except ValueError,arg:
+    print arg,"is not a number"
+  else:
+    print "this is a number inputs"
+
+try_exception('xxx')
+#输出异常值
+Invalide literal for int() with base 10: 'xxx' is not a number
+
+
+
+
+
+Python 在 Windows 环境下(在 linux 环境下不存在此问题),在 write 后，直接 read， 会出现乱码问题。如下：
+fo = open("foo.txt", "w+")
+fo.write('www.runoob.com')
+print fo.read()
+
+改进以后的代码如下：
+fo = open("foo.txt", "w+")
+fo.write('www.runoob.com')
+fo.flush()
+fo.seek(0)#指定指针为止为文件开头
+print fo.read()
+读取乱码问题完美解决。

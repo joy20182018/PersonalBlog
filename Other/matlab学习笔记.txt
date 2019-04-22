@@ -1,0 +1,461 @@
+﻿A(:) %依次取行列所有元素
+A(:, 3) %取第三列的元素
+A(:, 1:2) %取第一列到第三列的元素
+A(2:3, 1:2) %取既在第二行第三行，也在第一列第二列的元素
+A(2: 3)% 取2到3的数据
+A(1:2, :) % 依次取第一行到第二行的数据
+
+···矩阵元素的引用
+A(i,j) 矩阵 A 中的第 i 行，第 j 列元素
+A(i:j,m:n) 由第 i 至 j 行和第 m 至 n 列组成的子矩阵
+A(i:end,m:n) 第 i 行到最后一行与 m 至 n 列组成的子矩阵
+A(i:j,m:end) 第 m 列到最后一列与 i 至 j 行组成的子矩阵
+A(:,k) 矩阵的第 k 列
+A(i,:) 矩阵的第 i 行
+A(i:j,:) 矩阵的第 i 行到第 j 行
+A(:,m:n) 矩阵的第 m 行到第 n 列
+A(:,:) 整个矩阵
+A(:) 将矩阵的所有元素按列排成一个列向量
+A([i1, i2, ..., ip],[j1, j2, .., jq]) 第 i1,..., ip 行和第 j1,.., jq 列组成的子矩阵
+删除指定的行或列
+A(i,:)=[] 删除第 i 行
+A(:,j)=[] 删除第 j 列
+A(i:j,:)=[] 删除第 i 至第 j 行
+A(:,i:j)=[] 删除第 i 至第 j 列
+A(:,:)=[] 删除整个矩阵
+
+常见矩阵生成函数
+zeros(m,n)
+zeros(n)
+生成一个 m 行 n 列的零矩阵
+m=n 时可简写为 zeros(n)
+ones(m,n)
+ones(n)
+生成一个 m 行 n 列的元素全为 1 的矩阵
+m=n 时可简写为 ones(n)
+eye(m,n)
+eye(n)
+生成一个主对角线全为 1 的 m 行 n 列矩阵
+m=n 时可简写为 eye(n)，即为 n 维单位矩阵
+rand(m,n)
+rand(n)
+产生 0～1 间均匀分布的随机矩阵
+m=n 时简写为 rand(n)
+randn(m,n)
+randn(n)
+产生均值为 0，方差为 1 的标准正态分布随机矩阵
+m=n 时简写为 randn(n)
+round(1+ 31 * rand(1,1))；
+rand([m n])产生 m行，n列（0，1）范围内均匀分布的伪随机数
+如果要求在区间（a，b）内产生均匀分布的随机数
+
+r = a + (b-a).*rand([m n]));
+
+magic(n) 生成一个 n 阶魔方矩阵
+hilb(n) 生成一个 n 阶 Hilbert 矩阵
+invhilb(n) n 阶 Hilbert 矩阵的逆矩阵
+pascal(n) 生成一个 n 阶 pascal 矩阵
+vander(x) 生成一个 Vandermonde 矩阵
+wilkinson(n) 生成一个 n 阶 Wilkinson 矩阵（主要用于特征值测试）
+diag(X) 若 X 是矩阵，则 diag(X)为 X 的主对角线向量
+若 X 是向量， diag(X)产生以 X 为主对角线的对角矩阵
+diag(X,k) 若 X 是矩阵，则为提取 X 的第 k 条对角线
+若 X 是向量，则生成以 X 为第 k 条对角线的对角矩阵
+k 是一个整数，可正可负， k=0 时即为 diag(X)
+tril(A) 提取一个矩阵的下三角部分
+triu(A) 提取一个矩阵的上三角部分
+gallery 一些供测试用的小矩阵
+
+
+S1 = load('IntBP1.mat');
+BP1 = struct2cell(S1);
+Mymat1 = cell2mat(BP1);  % 转换为矩阵形式
+
+···自动添零功能
+max(a)  %返回该矩阵中每一列的最大值，复数矩阵返回每一列最大幅度值
+.* %逐元素相乘
+
+[x, k] = max(A) %[最大值， 最大值的索引]
+size(A)  %返回行数，列数
+sort(A) %对A的每一列进行排序，并返回重组后的A
+sum(A) % 对A每一列求和，并返回每列和的一个行向量
+zeros(n) %创建一个n*n零矩阵
+zeros(n,m) % 创建一个n*m的零矩阵，也可以创建一个零列向量或零行向量
+cross(A, B) %外积
+dot(A, B) % 内积
+用一个行向量可以表示一个多项式的系数，poly()计算该多项式的根的多项式系数两个多项式阶数不同时，需要补零，才能计算
+polyval(a, x)计算多项式在自变量x处的值，a是多项式系数
+angle(x) %计算复数x的相角
+ans(x)  %计算复数x的模
+real(x) % 实部
+imag(x) % 虚部
+conj(x) % 复共轭
+
+···MATLAB 操纵坐标轴
+axis off;        % 去掉坐标轴
+axis tight;                     % 紧坐标轴
+axis equal;                     % 等比坐标轴
+axis([-0.1, 8.1, -1.1, 1.1]);   % 坐标轴的显示范围
+
+···系统预定义的变量：
+pi 圆周率
+inf, Inf 无穷大
+i, j 虚部单位
+eps 双精度浮点运算相对误差（机器精度），大约为 2.220410-16
+nan, NaN Not-a-number, 不定值
+
+···Matlab 中的数：
+① 默认的是双精度实数；
+② 可用浮点形式或科学计数法表示；
+③ 所能表示的实数的范围为： 10-308 ～ 10308；
+④ 浮点运算的相对误差为 eps，大约为 2.210-16；
+⑤ 复数的输入： z=3+4i
+
+N_1,N_2为列向量
+y = [N_1, N_2];% [左声道，右声道]立体声
+
+···条件语句：
+if 逻辑表达式
+  语句;
+end
+
+if 逻辑表达式
+  语句1;
+else
+  语句2；
+end
+
+elseif 逻辑表达式
+
+打开函数m文件的方法：
+1.type 函数名(如 type rgb2gray 或者 type rgb2gray.m):即可在命令窗口中显示此函数的源代码。
+2.open 函数名(如 open rgb2gray 或者 open rgb2gray.m):即可打开rgb2gray.m文件
+3.edit 函数名(如 edit rgb2gray 或者 edit rgb2gray.m):即可打开rgb2gray.m文件
+
+···自定义函数
+function [函数输出变量1,变量2，....] = 函数名(函数输入变量)
+可以有多个输出，多个输入
+
+
+逐元素运算符 .*等
+find(x)  %计算x中非零元素的索引
+
+使用循环遍历数组：
+a = [1, 2, 4,3,4,5];
+for v = a
+   disp(v)
+end
+
+for 循环变量 = m:s:n
+  语句;
+end
+
+switch response
+  case 值1
+     语句1；
+  case 值2
+     语句2；
+ ...
+  otherwise （可有可无）
+     语句组n
+
+end
+
+
+subplot(m,n,p); % 将图放在第m行n列的第p个位置
+
+p = polyfit(x,y,n); % 用n阶多项式去拟合，向量x，y构成的数据集，并返回一个n+1阶行向量
+y可以换成其他的函数，如log10(y).表示以指数函数拟合
+polyval(a,x);  % 计算多项式a在自变量x处的值，x可以为数组或向量，矩阵
+
+u = [2 7 4 9]; % 多项式节阶次有高到低
+v = [1 0 1];
+[q,r] = deconv(u,v) % 多项式除法或解卷积  u = conv(v,q)+r
+q = 1×2
+
+     2     7
+
+r = 1×4
+
+     0     0     2     2
+
+
+
+polar(theta,r);% 极坐标画图
+[p,s,mu] = polyfit(x,y,n); %用n阶多项式去拟合，向量x，y构成的数据集，并返回一个n+1阶行向量，s为误差估计值，可选输出。mu是个只有两个元素的向量，依次为均值，标准差
+
+y = wgn(m,n,p);%产生m行n列高斯白噪声
+
+连续白噪声和离散白噪声序列的关系：
+   连续白噪声的功率谱密度是一个常数，而离散白噪声序列并不是对连续白噪声进行采样的结果，如果对连续白噪声采样，则由于不满足奈奎斯定理形成的序列会有混叠，其功率谱密度就不是常数了。
+    离散白噪声序列其实是对带限的连续白噪声进行采样。
+
+y = awgn(x,SNR); %在信号x中加入信噪比为SNR的高斯白噪声。
+
+自相关计算
+r = xcorr(x);% 计算x的自相关序列，x是矩阵，r也是矩阵
+r = xcorr(x, y); % 计算x，y的互相关
+
+在simulink中，选中模块，单击Ctrl，再点击另一模块，完成自动连接
+
+B = repmat(A, n) % A一个矩阵或数组，B的大小为size(A)*n,B中元素重复A中的元素
+B = repmat(A, n1, n2) % B的大小行乘n1，列乘n2
+B = repmat(A, r2，r3，...) % 高维矩阵
+
+y = resample(x, p, q) %输入x，y信号的采样率变为p/q,x是矩阵，则对其每一列视为一个通道，并采用抗混叠或抗镜像滤波器。
+y = resample(x, p, q) %N为设计滤波器阶数
+y = resample(x, p, q， beta) %beta为凯泽窗参数，默认值5
+y = resample(x, p, q， b) %b为自己设计的FIR抗混叠或镜像滤波器系数矩阵
+
+线性内插法：认为相邻几个点在一条直线上，内插入的点也在该直线上，即认为其变化（增减）是线形的，可以在坐标图上画出一条直线
+拉格朗日内插法:把多个多项式相加成最终的多项式
+
+ceil(x) % 对x向上取整
+r = rem(a,b) % r为a除以b的余数
+mod与rem：
+mod 函数生成一个为零或与除数具有相同符号的结果。rem 函数生成一个为零或与被除数具有相同符号的结果。另一个差别是当除数为零时，mod 函数遵从 mod(a,0) 返回 a 的约定，而 rem 函数遵从 rem(a,0) 返回 NaN 的约定。两个结果都有其各自的用途。例如，在进行信号处理时，mod 函数可在周期信号上下文中使用，因为其输出是周期性的（周期等于除数）
+
+k = find(X) 返回一个包含数组 X 中每个非零元素的线性索引的向量。
+如果 X 为向量，则 find 返回方向与 X 相同的向量。
+如果 X 为多维数组，则 find 返回由结果的线性索引组成的列向量。
+如果 X 包含非零元素或为空，则 find 返回一个空数组。
+k = find(X,n) 返回与 X 中的非零元素对应的前 n 个索引。
+k = find(X,n,direction)（其中 direction 为 'last'）查找与 X 中的非零元素对应的最后 n 个索引。direction 的默认值为 'first'，即查找与非零元素对应的前 n 个索引
+k = find(x==13) %返回索引
+y = floor(a) % 取整函数，向下取整
+y = round(x) % 取整函数，向上取整
+rehash  % 更新Matlabroot中搜索路径上文件夹的已知文件和类的MATLAB列表。它将加载函数的时间戳与磁盘上的时间戳进行比较。如果磁盘上的文件较新，则清除加载的函数。所有这些通常在MATLAB每次显示命令窗口提示符时都会发生。只有在运行更新另一个程序文件的程序文件并且调用文件需要在调用文件运行完之前使用第二个文件的更新版本时，才可以使用不带参数的rehash。
+
+rehash path  %  执行与rehash相同的更新，除非它无条件地更新搜索路径上不位于matlabroot中的所有文件夹的已知文件和类的列表。只有当您在MATLAB启动期间收到警告时才运行rehash path，通知您MATLAB无法判断文件夹是否已更改，并且您在MATLAB不使用最新版本的程序文件时遇到了问题。
+
+rehash toolbox  % 执行与rehash path相同的更新，除非它更新搜索路径上所有文件夹(包括matlabroot中的文件夹)的已知文件和类的列表。在会话期间更改、添加或删除matlabroot中的文件时，运行rehash toolbox。通常，不应更改matlabroot中的文件和文件夹。
+
+rehash toolboxcache % 执行与rehash toolbox相同的更新，并更新缓存文件。这相当于单击“常规首选项”对话框中的“ Update Toolbox Path Cache”按钮。
+
+···FIR滤波器设计常用窗函数：（均为列向量）
+wd = hanning(x) % 汉宁窗
+wd = hamming(x) % 海明窗
+wd = blackman(x) % 布莱克曼窗
+freqz函数：数字滤波器频率响应
+[h, w] = freqz(b, a, n) % 返回一个n点的频率响应向量h，w角频率矢量，b/a为滤波器系数
+
+y = filter(b,a,x) 使用由分子和分母系数 b 和 a 定义的有理传递函数 对输入数据 x 进行滤波。
+a.如果 a(1) 不等于 1，则 filter 按 a(1) 对滤波器系数进行归一化。因此，a(1) 必须是非零值。
+b.如果 x 为向量，则 filter 将滤波后数据以大小与 x 相同的向量形式返回。
+c.如果 x 为矩阵，则 filter 沿着第一维度操作并返回每列的滤波后的数据。
+d.如果 x 为多维数组，则 filter 沿大小不等于 1 的第一个数组维度进行计算。
+
+b = fir1(M, wn, 'type', window); % M,所选滤波器阶数，wn，理想滤波器给定的截止频率，如果有多个就截止频率如带阻或带通滤波器，用向量[wn1, wn2], 多个就用多元向量。type，滤波器类型，高通‘high’，带阻‘stop’，window为窗函数类型调用
+b = fir1(46, [0.2, 0.6], 'stop', hanning(56));
+
+···矩阵的 Kronecker（克罗内克，张量积） 乘积：
+ kron(A,B)
+
+···矩阵的翻转与旋转
+fliplr(A) 左右翻转
+flipud(A) 上下翻转
+rot90(A) 逆时针旋转 90 度
+rot90(A,k) 逆时针旋转 k*90 度
+
+···改变矩阵的形状和查看矩阵的大小
+reshape(A,m,n) 将矩阵元素按列方向重新排列，生成一个 m×n 的新矩阵
+size(A) 返回矩阵 A 的行数和列数
+size(A,1) 返回矩阵 A 的行数
+size(A,2) 返回矩阵 A 的列数
+length(x) 若 x 是向量，则返回 x 的长度
+length(X) 若 X 是矩阵，则返回行数和列数中大的一个
+numel(A) 返回 A 的元素的个数
+
+···函数作用在矩阵上的取值：设 f 是函数， x 是变量（可以是向量或矩阵），则
+① f(x)是作用在 x 的每个分量上；
+② 若 x 是矩阵，则 f(x)是一个与 x 同形状的矩阵
+
+···取整与求余
+ceil(x) 朝正无穷大方向取整 mod(m,n) 模数求余
+fix(x) 朝 0 方向取整 rem(m,n) 求余数
+floor(x) 朝负无穷大方向取整 sign(x) 符号函数
+round(x) 四舍五入取整 gcd(m,n) 最大公约数
+factor(n) 分解成素数的乘积 lcm(m,n) 最小公倍数
+factorial(n) 阶乘 primes(n) 不超过 n 的所有素数
+
+···数据分析
+sum(x) 求和 sort(x) 排序
+max(x) 最大值 sortrows(X) 按行排序
+min(x) 最小值 hist(x) 统计频数直方图
+mean(x) 平均值 histc(x) 直方图统计
+median(x) 中值 std(x) 标准差
+prod(x) 元素乘积 var(x) 求方差
+intmin 能表示的最小整数 realmin 能表示的最小实数
+intmax 能表示的最大整数 realmax 能表示的最大实数
+
+···微积分
+limit(f,x,a) %计算极限 x->a时f的极限
+limit(f,x,a,'left') %计算左极限
+limit(f,x,a,'right') %计算右极限
+diff(f,x) %计算 f 关于变量 x 的导数
+diff(f,x,n) %计算 f 关于变量 x 的 n 阶导数
+int(f,x,a,b)%计算定积分，a是下限，b是上限
+int(f,x) 计算不定积分%
+taylor(f,x,a)% 计算 f 在 x=a 处的五阶 Taylor 展开
+taylor(f,x,a,'order',N) %计算 f 在 x=a 处的 N‐1 阶 Taylor 展开
+
+Stem函数绘图
+stem(Y); %将数据序列Y从x轴到数据值按照茎状形式画出，以圆圈终止。如果Y是一个矩阵，则将其每一列按照分隔方式画出。
+stem(X,Y);%在X的指定点处画出数据序列Y.
+stem(...,'filled'); %以实心的方式画出茎秆。
+
+向量倒序排列：
+b = a(end:-1:1)
+pause(t); % 暂停时间t
+
+求随机数序列之和，直到下一随机数大于上限为止。然后，使用 break 语句退出循环。
+limit = 0.8;
+s = 0;
+while 1 % 进入一个无限循环
+    tmp = rand;
+    if tmp > limit
+        break
+    end
+    s = s + tmp;
+end
+
+.....断点调试方法
+F12：设置/取消 断点
+F10：单步执行
+F11：单步执行，且碰到function跳入函数内执行，F10则不会跳入，这是二者的明显区别
+Shift + F11:跳入function之后，通过该指令推出function
+F5：执行相邻两次断点见的所有指令，如：断点在for循环中，则F5一次，循环执行一次，或者直接运行程序
+Shift + F5：退出断点调试
+
+try...catch...end
+try...catch...end用于检查错误，如
+m = rand(3,4);
+n = magic(5);
+try
+     a = m*n;
+     disp(a)
+catch
+     disp(size(m))
+     disp(size(n))
+end
+disp(m)
+　　这里面，当程序碰到 a = m*n;错误后，就会跳转到catch里面的语句，继续执行，有点类似于if...else...end
+
+如果是简单的连接的话，以下代码可以说明。
+>> a=[1 2 3]
+a =
+1 2 3
+>> b=[4 5]
+b =
+4 5
+>> c=[a b]
+c =
+1 2 3 4 5
+如果是列向量的连接的话，可以参照以下例子：
+>> d=[a';b']
+d =
+1
+2
+3
+4
+5
+
+在程序中首位依次添加profile on 和 profile viewer可以调用其内置的代码分析器
+
+可以画常函数
+x=1:10
+y=0.2*exp(x-x);
+plot(x,y);
+
+mcc -m filename.m -c   % 转换为c语言代码
+
+matlab计时器
+tic，toc
+toc计算的值为最后一次与tic之间的值
+
+n = norm(v); % 返回v的2范数
+n = norm(v,p); % 返回v的p范数
+n = norm(X); % 返回矩阵X的2范数，或最大奇异值
+n = norm(X，p);% 如果 p = 1（列和范数），则 n 是矩阵的最大绝对列之和。如果 p = 2，则 n 近似于 max(svd(X))。这相当于 norm(X)。如果 p = Inf（行和范数），则 n 是矩阵的最大绝对行之和。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+matlab面向对象编程：
+基本架构：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+matlab错误：
+1.Output argument "y" (and maybe others)
+not assigned during call to
+调用期间未分配的输出参数“y”(可能还有其他参数)
+可能是函数中定义的变量没有赋值或初始化
+2.Subscript indices must either be real positive integers or logicals
+下标指数必须是实数正整数或逻辑值。
+3.Matrix dimensions must agree
+矩阵的维数必须一致
+4.ndex exceeds matrix dimensions
+索引超出矩阵范围
+5.In an assignment A(I) = B, the number of elements in B and I must be the same
+在赋值语句 A(I) = B 中，B 和 I 的元素个数必须相同
+
+6：Expression or statement is incomplete or incorrect.
+ 表达或陈述不完整
