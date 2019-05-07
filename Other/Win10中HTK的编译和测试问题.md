@@ -1,113 +1,114 @@
-这是英文的安装指导
+# 这是英文的安装指导
 
 我按照这个来进行安装，有些看不太懂的地方我又谷歌了一下
-  Compiling & Installing HTK under Windows
-  ========================================
-  
-  Prerequisites:
-      * HTK has been verified to compile using Microsoft Visual Studio.
-      * For testing, you will require a Perl interpreter such as
-        ActivePerl.  
-      * You will need a tool such as 7-zip or winzip (commercial) for unpacking
-        the HTK source code archive.
-      * It is helpful if you have some familiarity with using the DOS
-        command line interface, as you will need to interact with it in
-        order to compile, install and run HTK.
-      * Ensure that your PATH contains 
-        C:\Program Files\Microsoft Visual Studio .NET 2003\Vc7\bin
-        Or if you are using older versions:
-        C:\Program Files\Microsoft Visual Studio\VC98\bin
+
+Compiling & Installing HTK under Windows
+========================================
+
+Prerequisites:
+    * HTK has been verified to compile using Microsoft Visual Studio.
+    * For testing, you will require a Perl interpreter such as
+      ActivePerl.  
+    * You will need a tool such as 7-zip or winzip (commercial) for unpacking
+      the HTK source code archive.
+    * It is helpful if you have some familiarity with using the DOS
+      command line interface, as you will need to interact with it in
+      order to compile, install and run HTK.
+    * Ensure that your PATH contains 
+      C:\Program Files\Microsoft Visual Studio .NET 2003\Vc7\bin
+      Or if you are using older versions:
+      C:\Program Files\Microsoft Visual Studio\VC98\bin
 
 
-  Compilation:
-  
-     1. Unpack the HTK sources using 7-zip.
-     2. Open a DOS command window: Click Start, select Run type cmd at
-        the prompt and click OK.
-     3. cd into the directory in which you unpacked the sources.
-     4. cd into the htk directory. Type:
+Compilation:
 
-        cd htk
+   1. Unpack the HTK sources using 7-zip.
+   2. Open a DOS command window: Click Start, select Run type cmd at
+      the prompt and click OK.
+   3. cd into the directory in which you unpacked the sources.
+   4. cd into the htk directory. Type:
 
-     5. Create a directory for the library and tools. Type:
+      cd htk
 
-        mkdir bin.win32
+   5. Create a directory for the library and tools. Type:
 
-     6. Run VCVARS32 (it should be in your path, see prerequisites above)
-     7. Build the HTK Library, which provides the common functionality
-        used by the HTK Tools. Enter the following commands:
+      mkdir bin.win32
 
-      cd HTKLib
-      nmake /f htk_htklib_nt.mkf all
-      cd ..
+   6. Run VCVARS32 (it should be in your path, see prerequisites above)
+   7. Build the HTK Library, which provides the common functionality
+      used by the HTK Tools. Enter the following commands:
 
-     8. Build the HTK Tools
+    cd HTKLib
+    nmake /f htk_htklib_nt.mkf all
+    cd ..
 
-      cd HTKTools
-      nmake /f htk_htktools_nt.mkf all
-      cd ..
-      cd HLMLib
-      nmake /f htk_hlmlib_nt.mkf all
-      cd ..
-      cd HLMTools
-      nmake /f htk_hlmtools_nt.mkf all
-      cd ..
+   8. Build the HTK Tools
 
-  Installation:
-  The HTK tools have now been built and are in the bin.win32
-  directory. You should add this directory to your PATH, so that you can
-  run them easily from the command line in future.
+    cd HTKTools
+    nmake /f htk_htktools_nt.mkf all
+    cd ..
+    cd HLMLib
+    nmake /f htk_hlmlib_nt.mkf all
+    cd ..
+    cd HLMTools
+    nmake /f htk_hlmtools_nt.mkf all
+    cd ..
+
+Installation:
+The HTK tools have now been built and are in the bin.win32
+directory. You should add this directory to your PATH, so that you can
+run them easily from the command line in future.
 
 
-  Testing the Installation
-  ========================
+Testing the Installation
+========================
 
-  Among the samples on the HTK website you'll find the HTKDemo package
-  that can be used to test your installation. See
-  http://htk.eng.cam.ac.uk/download.shtml for download instructions.
+Among the samples on the HTK website you'll find the HTKDemo package
+that can be used to test your installation. See
+http://htk.eng.cam.ac.uk/download.shtml for download instructions.
 
-  As an initial test of the installation please run the HTK
-  demonstration using the configuration file
-  HTKDemo/configs/monPlainM1S1.dcf. There is a README file in the
-  HTKDemo directory explaining the operation of the demonstration in
-  detail but, in short, you need to run the demonstration script passing
-  it the configuration file configs/monPlainM1S1.dcf as input. 
-  To test the language modelling tools you should follow the tutorial
-  in the HTK book, using the files in the LMTutorial/ directory.
+As an initial test of the installation please run the HTK
+demonstration using the configuration file
+HTKDemo/configs/monPlainM1S1.dcf. There is a README file in the
+HTKDemo directory explaining the operation of the demonstration in
+detail but, in short, you need to run the demonstration script passing
+it the configuration file configs/monPlainM1S1.dcf as input. 
+To test the language modelling tools you should follow the tutorial
+in the HTK book, using the files in the LMTutorial/ directory.
 
-  Before running the demo make sure you have compiled all the HTK tools
-  and the executables are in your PATH, i.e. just typing 'HInit' at the
-  commandline prints a short usage summary. To run the demonstration
-  type:
+Before running the demo make sure you have compiled all the HTK tools
+and the executables are in your PATH, i.e. just typing 'HInit' at the
+commandline prints a short usage summary. To run the demonstration
+type:
 
-  $ cd HTKDemo
-  $ ./runDemo configs/monPlainM1S1.dcf
+$ cd HTKDemo
+$ ./runDemo configs/monPlainM1S1.dcf
 
-  The recognition results obtained should match the following.
+The recognition results obtained should match the following.
 
-  On the training set:
-  ------------------------ Overall Results --------------------------
-  SENT: %Correct=0.00 [H=0, S=7, N=7]
-  WORD: %Corr=77.63, Acc=74.89 [H=170, D=37, S=12, I=6, N=219]
-  ===================================================================
+On the training set:
+------------------------ Overall Results --------------------------
+SENT: %Correct=0.00 [H=0, S=7, N=7]
+WORD: %Corr=77.63, Acc=74.89 [H=170, D=37, S=12, I=6, N=219]
+===================================================================
 
-  On the test set:
-  ------------------------ Overall Results --------------------------
-  SENT: %Correct=0.00 [H=0, S=3, N=3]
-  WORD: %Corr=63.91, Acc=59.40 [H=85, D=35, S=13, I=6, N=133]
-  ===================================================================
+On the test set:
+------------------------ Overall Results --------------------------
+SENT: %Correct=0.00 [H=0, S=3, N=3]
+WORD: %Corr=63.91, Acc=59.40 [H=85, D=35, S=13, I=6, N=133]
+===================================================================
 
-  NB to run this demo under Windows you must have perl installed and you
-  need to invoke perl explicitly. See http://www.perl.org/ to download
-  the perl distribution. The script runDemo.pl should be used in place
-  of runDemo i.e. to run the test above type
+NB to run this demo under Windows you must have perl installed and you
+need to invoke perl explicitly. See http://www.perl.org/ to download
+the perl distribution. The script runDemo.pl should be used in place
+of runDemo i.e. to run the test above type
 
-   > perl runDemo.pl configs\monPlainM1S1.dcf
+ > perl runDemo.pl configs\monPlainM1S1.dcf
    
  
  
  
-大致上说一下：
+# 大致上说一下：
 1.安装Microsoft Visual Studio开发环境（以下简称VS），因为HTK代码需要通过VS来编译。
 
 安装ActivePerl工具，测试的时候需要用到Perl命令
@@ -197,13 +198,24 @@ cd ..
 现在，HTK工具已经创建完成，编译生成的exe文件都存放在第一步创建的bin.win32目录下。此时需要在系统环境变量的PATH中添加bin.win32路径的值。
 
 
+## HTK安装使用中出现的问题（如文章开篇所说的问题）的解决方法：
+
+1、出现这个问题的原因本人暂时无法详细给出，网上也有很多分析，感兴趣的同志们可以自己去搜；
+
+2、解决之道如下：
+
+-1、这需要修改HTKLib文件夹下的htk_htklib_nt.mkf文件，共有两处需要修改：将文件中的HGraf.null.obj替换为HGraf_WIN32.obj、HGraf.null.olv替换为HGraf_WIN32.olv;
+
+-2、然后在cmd命令行中重新编译HTKLib文件夹下的htk_htklib_nt.mkf;
+
+-3、检查HTKTools文件夹下的Makefile.in文件，如果有"-lX11"字符的话将其删除，然后在cmd命令行中重新编译HTKTools文件夹下的htk_htktools_nt.mkf文件;
+
+3、之后将bin.win32文件夹的路径加入到环境变量中即可测试，成功（示例：HSLab 0.sig）
 
 
 
 
-
-
-## 使用
+# 使用
  使用篇
 
 -------------------------------------------------------------------------------
