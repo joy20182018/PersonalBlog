@@ -194,22 +194,36 @@ of runDemo i.e. to run the test above type
               然后使用如下命令（测试Demo）：
 
               cd HTKDemo
+              
               mkdir hmms
+              
               cd hmms
+              
               mkdir tmp
+              
               mkdir hmm.0
+              
               mkdir hmm.1
+              
               mkdir hmm.2
+              
               mkdir hmm.3
+              
               cd ..
+              
               mkdir proto
+              
               mkdir acc
+              
               mkdir test
+              
               perl runDemo.pl configs\monPlainM1S1.dcf
+              
               
   如果无法识别HSLab不是内部命令，将将htk目录下的HTKLib中的HGraf.null.obj替换为HGraf_WIN32.obj、HGraf.null.olv替换为 HGraf_WIN32.olv。
 
-              测试完成，ok了  ，碰到问题，找谷歌，用英文找。
+  测试完成，ok了  ，碰到问题，找谷歌，用英文找。
+              
 
 现在，HTK工具已经创建完成，编译生成的exe文件都存放在第一步创建的bin.win32目录下。此时需要在系统环境变量的PATH中添加bin.win32路径的值。
 
