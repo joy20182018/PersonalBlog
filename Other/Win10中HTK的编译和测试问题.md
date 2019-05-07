@@ -87,16 +87,23 @@ $ ./runDemo configs/monPlainM1S1.dcf
 The recognition results obtained should match the following.
 
 On the training set:
+
 ------------------------ Overall Results --------------------------
+
 SENT: %Correct=0.00 [H=0, S=7, N=7]
+
 WORD: %Corr=77.63, Acc=74.89 [H=170, D=37, S=12, I=6, N=219]
 
 ===================================================================
 
 On the test set:
+
 ------------------------ Overall Results --------------------------
+
 SENT: %Correct=0.00 [H=0, S=3, N=3]
+
 WORD: %Corr=63.91, Acc=59.40 [H=85, D=35, S=13, I=6, N=133]
+
 
 ===================================================================
 
@@ -134,29 +141,36 @@ of runDemo i.e. to run the test above type
  
  cd HTKLib（进入路径）
  
-nmake /f htk_htklib_nt.mkf all
+> nmake /f htk_htklib_nt.mkf all
 
-cd ..
+> cd ..
 
 
 同理编译HTK TOOLS ,输入以下命令：
-cd HTKTools
 
- nmake /f htk_htktools_nt.mkf all
+> cd HTKTools
+
+ > nmake /f htk_htktools_nt.mkf all
  
-cd ..
+> cd ..
 
-cd HLMLib
 
-nmake /f htk_hlmlib_nt.mkf all
+> cd HLMLib
 
-cd ..
 
-cd HLMTools
+> nmake /f htk_hlmlib_nt.mkf all
 
-nmake /f htk_hlmtools_nt.mkf all
 
-cd ..
+> cd ..
+
+
+> cd HLMTools
+
+
+> nmake /f htk_hlmtools_nt.mkf all
+
+
+> cd ..
 
 
 6.编译成功后打开bin.win32是这样的：
