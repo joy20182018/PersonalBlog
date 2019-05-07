@@ -130,19 +130,31 @@
 5、输入如下命令，来编译HTK Library:
  
  cd HTKLib（进入路径）
+ 
 nmake /f htk_htklib_nt.mkf all
+
 cd ..
+
 
 同理编译HTK TOOLS ,输入以下命令：
 cd HTKTools
+
  nmake /f htk_htktools_nt.mkf all
+ 
 cd ..
+
 cd HLMLib
+
 nmake /f htk_hlmlib_nt.mkf all
+
 cd ..
+
 cd HLMTools
+
 nmake /f htk_hlmtools_nt.mkf all
+
 cd ..
+
 
 6.编译成功后打开bin.win32是这样的：
                HSLab.exe     录音，标记工具
@@ -158,6 +170,7 @@ cd ..
 
 把samples解压到htk文件夹中，
  配置环境变量输入命令 path=%path%;e:\htk\bin.win32
+ 
 
               测试，输入命令  HInit，出现option
 
