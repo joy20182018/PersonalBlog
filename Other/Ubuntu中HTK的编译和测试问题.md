@@ -223,7 +223,7 @@ gnu目录下有stubs-64.h但没有32位的，apt-get安装libc6-dev-i386
 4.链接找不到-lX11
 
 编译的HTK是32位的，所以不能用64位的X11库，搜索到http://aravindev.blogspot.com/2013/08/installing-htk-34-on-ubuntu-64-bit-os.html
-但我用他的方法还是不行，所以只好重新configure --without-x --disable-hslab，这样能编译通过
+但我用他的方法还是不行，所以只好重新configure --without-x --disable-hslab，这样能编译通过（这个好像并不行）
 
  
 
@@ -257,6 +257,10 @@ gnu目录下有stubs-64.h但没有32位的，apt-get安装libc6-dev-i386
     ($get_dir =~ "HTKDEMO") || die "Must be in directory HTKDemo to run this script\n";
 
 把$NT_dir打印出来发现是空的，把$NT_dir = `cd`;改成$NT_dir = `pwd`;，然后这里就OK了
+
+总结需要的库
+    sudo apt-get install libx11-dev:i386
+    sudo apt-get install libc6-dev:i386
 
 
 6.安装HDecode
